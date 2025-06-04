@@ -2,15 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/posts', [PostsController::class, 'index'])->middleware(['auth', 'verified'])->name('posts.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,6 +16,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/categories', [CategoryController::class, 'index']);
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{slug}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
+Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('categories.update');
+Route::get('/categories/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 require __DIR__.'/auth.php';
