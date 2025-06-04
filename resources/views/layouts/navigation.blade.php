@@ -1,19 +1,14 @@
-<nav x-data="{ open: false }" class="bg-[#FDFDFC] dark:bg-[#732255] border-b border-gray-100 dark:border-[#3e5d82] shadow text-[#732255] dark:text-[#E7F2E4]">
+<nav x-data="{ open: false }" class="ixed top-0 left-0 w-full z-50 bg-[#FDFDFC] dark:bg-[#732255] shadow text-[#E7F2E4]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-[#732255] dark:text-[#E7F2E4]" />
-                    </a>
-                </div>
 
+                <div class="font-bold text-lg">Mi Blog</div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
-                        {{ __('All') }}
+                        {{ __('Mis Posts') }}
                     </x-nav-link>
                 </div>
             </div>

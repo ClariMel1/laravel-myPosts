@@ -1,13 +1,13 @@
-<x-app-layout>
+
     <div class="mx-auto max-w-4xl py-5">
-        <h1 class="font-semibold text-xl  text-white leading-tight"> {{ __('Listado de categorías') }}<h1>
+        <h1 class="font-semibold text-xl  text-white leading-tight"> {{ __('Listado de categorías') }}</h1>
 
     @if($categories->count())
         <div class="w-full py-4">
             @foreach($categories as $category)
             <div class="bg-white rounded-lg shadow-md px-5 py-2 mt-5 hover:shadow-lg transition">
                 <div class="flex items-center justify-between mb-2">
-                    <a href="{{  route('categories.show', $category->slug) }}" class="font-bold text-2xl cursor-pointer">
+                    <a href="{{  route('categories.show', $category->slug) }}" class=" text-black font-bold text-2xl cursor-pointer">
                         {{ $category->name }}
                     </a>
                     @if ($category->user_id === auth()->id())
@@ -27,4 +27,3 @@
         {{__('+ Añadir nueva categoría') }}
     </a>
     </div>
-</x-app-layout>
