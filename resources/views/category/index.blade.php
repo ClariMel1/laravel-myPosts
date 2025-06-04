@@ -1,5 +1,9 @@
 <x-app-layout>
-    <h1 class="text-2xl font-bold mb-6">Listado de categorías</h1>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl  leading-tight">
+            {{ __('Listado de categorías') }}
+        </h2>
+    </x-slot>
 
     @if($categories->count())
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
