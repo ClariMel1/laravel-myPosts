@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        return view('home');
+        $posts = Post::all(); 
+
+        $categories = Category::all(); 
+
+        return view('home', compact('posts', 'categories'));
     }
 }

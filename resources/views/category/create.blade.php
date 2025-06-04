@@ -1,27 +1,37 @@
-@extends('layouts.app')
-
-@section('title', 'Crear Categoría')
-
-@section('content')
-    <h1 class="text-2xl font-bold mb-4">Crear Nueva Categoría</h1>
-    <form action="{{ url('/category/store') }}" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-md">
+<x-app-layout>
+  <div class="mx-auto max-w-4xl py-5">
+        <div class="max-w-4xl mx-auto px-0 flex flex-col md:flex-row rounded shadow overflow-hidden" style="min-height: 400px;">
+        <form action="{{ route('categories.store') }}" method="POST" class="bg-[#1e1e1e] w-full px-12 py-8 overflow-auto transition-all duration-300" id="formSection">
         @csrf
-        <div class="mb-4">
-            <label for="title" class="block font-semibold mb-2">Título:</label>
-            <input type="text" id="title" name="title" class="border rounded w-full p-2" required>
+
+        <div class="relative mb-6">
+            <input
+                type="text"
+                name="name"
+                value="{{ old('name', $category->name ?? '') }}"
+                placeholder="Nombre de la Categoria"
+                class="w-full text-white text-xl font-semibold bg-transparent placeholder-gray-500 border-none outline-none ring-0 focus:ring-0 focus:outline-none focus:border-none transition-all duration-300"
+                autocomplete="off"
+                autofocus
+            />
         </div>
-        <div class="mb-4">
-            <label for="poster" class="block font-semibold mb-2">Autor:</label>
-            <input type="text" id="poster" name="poster" class="border rounded w-full p-2" required>
+
+        <div class="relative mb-6">
+            <textarea
+                name="description"
+                rows="4"
+                placeholder="¿De qué tratará esta sección?..."
+                class="w-full text-white text-sm bg-transparent placeholder-gray-500 border-none outline-none ring-0 focus:ring-0 focus:outline-none focus:border-none transition-all duration-300"
+                autocomplete="off"
+            >{{ old('description', $category->description ?? '') }}</textarea>
         </div>
-        <div class="mb-4">
-            <label for="content" class="block font-semibold mb-2">Contenido:</label>
-            <textarea id="content" name="content" class="border rounded w-full p-2" rows="5" required></textarea>
+
+        <div class="flex justify-between items-center mt-6">
+            <x-button>
+                {{__('Añadir nueva categoría') }}
+            </x-button>
         </div>
-        <div class="mb-4">
-            <label for="image" class="block font-semibold mb-2">Imagen:</label>
-            <input type="file" id="image" name="image" class="border rounded w-full p-2" accept="image/*">
-        </div>
-        <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Crear Categoría</button>
-    </form>
-@endsection
+        </form>
+    </div>
+  </div>
+</x-app-layout>

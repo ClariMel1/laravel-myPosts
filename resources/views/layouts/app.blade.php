@@ -28,7 +28,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-[#ffffff] dark:bg-[#E7F2E4] text-[#ffffff] min-h-screen">
                 {{ $slot }}
             </main>
         </div>

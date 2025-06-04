@@ -60,3 +60,9 @@ por
 | ⚙️ (`:gear:`) | **Infraestructura** | Cambios en la infraestructura del proyecto (p. ej., CI/CD, Docker). |
 | 🌐 (`:globe_with_meridians:`) | **Internacionalización** | Cambios en soporte de idiomas o localización. |
 | 💄 (`:lipstick:`) | **UI/UX** | Cambios en la interfaz de usuario o experiencia del usuario. |
+
+
+
+
+paleta de colores:
+https://colorhunt.co/palette/e55050732255b2c6d5e7f2e4
