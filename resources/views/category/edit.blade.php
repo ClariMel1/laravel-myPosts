@@ -31,9 +31,14 @@
             <x-button>
                 {{ __('Actualizar categoría') }}
             </x-button>
-            <a href="{{ route('categories.destroy') }}" class="border border-white text-white px-8 py-2 rounded-full cursor-pointer text-center items-center uppercase">
+
+            <form action="{{ route('categories.destroy', $category->slug) }}" method="POST" onsubmit="return confirm('¿Estás segura de que quieres eliminar esta categoría?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="border border-white text-white px-8 py-2 rounded-full cursor-pointer text-center items-center uppercase">
                 {{ __('Eliminar categoría') }}
-            </a>
+            </button>
+    </form>
         </div>
         </form>
     </div>
