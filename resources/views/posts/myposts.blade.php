@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Posts') }}
+                {{ __('My Posts') }}
             </h2>
             <div class="flex justify-end">
                 <a href="{{ route('posts.create') }}" class="text-blue-500 hover:text-blue-700">
@@ -28,11 +28,20 @@
                                 class="text-sm text-gray-500 dark:text-gray-400">{{ $post->created_at->diffForHumans() }}</span>
                             <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">Category:
                                 {{ $post->category->name }}</span>
-                            <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">Author:
-                                {{ $post->user->name }}</span>
                             <div class="mt-2">
                                 <a href="{{ route('posts.show', $post->id) }}"
-                                    class="text-blue-600 hover:underline">View Post</a>
+                                    class="text-blue-600 hover:underline">View</a>
+                                <a href="{{ route('posts.edit', $post->id) }}"
+                                    class="text-green-600 hover:underline">Edit</a>
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                    class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:underline ml-2"
+                                        onclick="return confirm('Are you sure you want to delete this post?');">
+                                        Delete
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     @endforeach
