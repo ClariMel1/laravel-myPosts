@@ -16,6 +16,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{slug}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
+Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('categories.update');
 
 require __DIR__.'/auth.php';

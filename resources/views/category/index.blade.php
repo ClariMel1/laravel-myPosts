@@ -1,22 +1,30 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl  leading-tight">
-            {{ __('Listado de categorías') }}
-        </h2>
-    </x-slot>
+    <div class="mx-auto max-w-4xl py-5">
+        <h1 class="font-semibold text-xl  text-white leading-tight"> {{ __('Listado de categorías') }}<h1>
 
     @if($categories->count())
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="w-full py-4">
             @foreach($categories as $category)
-                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
-                    <h2 class="text-xl font-semibold mb-2">{{ $category->name }}</h2>
-                    <p class="text-gray-600 mb-2"><span class="font-semibold">Autor:</span> {{ $category->user_id }}</p>
-                    <p class="text-gray-500 mb-4">{{ Str::limit($category->description, 80) }}</p>
-                    <a href="{{ url('category/show/'.$category->slug) }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Ver detalle</a>
+            <div class="bg-white rounded-lg shadow-md px-5 py-2 hover:shadow-lg transition">
+                <div class="flex items-center justify-between mb-2">
+                    <a href="{{  route('categories.show', $category->slug) }}" class="font-bold text-2xl cursor-pointer">
+                        {{ $category->name }}
+                    </a>
+                    @if ($category->user_id === auth()->id())
+                    <a href="{{ route('categories.edit', $category->slug) }}" class="text-blue-500 hover:underline ml-4">
+                        Editar
+                    </a>
+                    @endif
                 </div>
+            </div>
             @endforeach
         </div>
     @else
         <p class="text-gray-500">No hay categorías para mostrar.</p>
     @endif
+
+        <x-button>
+        {{  __('+ Agregar nueva categoría') }}
+        </x-button>
+    </div>
 </x-app-layout>

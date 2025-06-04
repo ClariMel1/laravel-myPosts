@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -38,7 +39,7 @@ class CategoryController extends Controller
     public function show(string $slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $posts = $category->posts()->where('habilitated', true)->latest()->get();
+        $posts = $category->posts()->where('is_published', true)->latest()->get();
 
         return view('category.show', compact('category', 'posts'));
     }
@@ -46,17 +47,30 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $category = Category::where('slug', $slug)->firstOrFail();
+        return view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug) 
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'description' => 'required|string',
+        ]);
+
+        $category = Category::where('slug', $slug)->firstOrFail();
+
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->description = $request->description;
+        $category->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**
