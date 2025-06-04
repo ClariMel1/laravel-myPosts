@@ -5,7 +5,7 @@
     @if($categories->count())
         <div class="w-full py-4">
             @foreach($categories as $category)
-            <div class="bg-white rounded-lg shadow-md px-5 py-2 hover:shadow-lg transition">
+            <div class="bg-white rounded-lg shadow-md px-5 py-2 mt-5 hover:shadow-lg transition">
                 <div class="flex items-center justify-between mb-2">
                     <a href="{{  route('categories.show', $category->slug) }}" class="font-bold text-2xl cursor-pointer">
                         {{ $category->name }}
@@ -20,11 +20,11 @@
             @endforeach
         </div>
     @else
-        <p class="text-gray-500">No hay categorías para mostrar.</p>
+        <p class="text-gray-500">{{__('No hay categorias') }}</p>
     @endif
 
-        <x-button>
-        {{  __('+ Agregar nueva categoría') }}
-        </x-button>
+    <a href="{{ route('categories.create') }}" class="bg-white text-black px-8 py-2 rounded-full text-center items-center border border-transparent uppercase inline-block">
+        {{__('+ Añadir nueva categoría') }}
+    </a>
     </div>
 </x-app-layout>
