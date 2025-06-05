@@ -24,7 +24,7 @@
             @endforeach
         </div>
     @else
-        <p class="text-gray-300">{{ __('No hay categorías') }}</p>
+        <p class="text-[#522546]">{{ __('No hay categorías') }}</p>
     @endif
 
     <a href="{{ route('categories.create') }}" 

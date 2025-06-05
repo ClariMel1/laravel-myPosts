@@ -40,7 +40,7 @@
             @endforeach
 
             @if ($posts->isEmpty())
-                <p class="text-gray-600 dark:text-gray-300">No hay publicaciones disponibles.</p>
+                <p class="text-[#522546] dark:text-[#522546]">No hay publicaciones disponibles.</p>
             @endif
         </div>
     </div>
