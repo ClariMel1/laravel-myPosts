@@ -30,7 +30,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')" class="transition hover:text-[#d493bc]">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -42,7 +42,10 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] dark:text-[#E7F2E4]">Login</a>
+                    <a href="{{ route('login') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] dark:text-[#E7F2E4]">Iniciar sesión</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] dark:text-[#E7F2E4]">Registrarse</a>
+                    @endif
                 @endauth
             </div>
 
@@ -77,7 +80,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')" class="transition hover:text-[#d493bc]">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -86,7 +89,7 @@
                     <x-responsive-nav-link :href="route('logout')" class="transition hover:text-[#d493bc]"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar sesion') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

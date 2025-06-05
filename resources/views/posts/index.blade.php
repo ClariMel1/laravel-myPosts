@@ -1,10 +1,11 @@
+<x-app-layout>
 <div class="mx-auto w-full">
 
     <div class="flex justify-between items-center">
-    <h1 class="font-semibold text-3xl  text-white leading-tight"> {{ __('All Posts') }}</h1>
+    <h1 class="font-semibold text-3xl  text-white leading-tight"> {{ __('Posts') }}</h1>
     
-    <a href="{{ route('posts.create') }}" class="bg-white text-black px-8 py-2 rounded-full text-center items-center border border-transparent uppercase inline-block">
-        {{ __('+ Create New Post') }}
+    <a href="{{ route('posts.create') }}" class="bg-white text-black px-8 py-2 rounded-full text-center items-center border-2 border-[#732255] uppercase inline-block">
+        {{ __('+Añadir Post') }}
     </a>
     </div>
 
@@ -40,8 +41,9 @@
             @endforeach
 
             @if ($posts->isEmpty())
-                <p class="text-[#522546] dark:text-[#522546]">No hay publicaciones disponibles.</p>
+                <p class="text-gray-600 dark:text-gray-300">No hay publicaciones disponibles.</p>
             @endif
         </div>
     </div>
 </div>
+</x-app-layout>

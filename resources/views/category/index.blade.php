@@ -1,3 +1,4 @@
+<x-app-layout>
 <div>
     <h1 class="font-semibold text-xl text-white leading-tight mb-4">
         {{ __('Listado de categorías') }}
@@ -32,4 +33,5 @@
         {{ __('+ Añadir nueva categoría') }}
     </a>
 </div>
+</x-app-layout>
 
