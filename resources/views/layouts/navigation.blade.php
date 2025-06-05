@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
 
-                <div class="font-bold text-lg">Mi Blog</div>
+                <a href="{{ route('home') }}" class="font-bold text-lg">Mi Blog</a>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">

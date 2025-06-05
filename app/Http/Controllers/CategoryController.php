@@ -31,7 +31,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'name' => 'required|string|max:100',
+        'name' => 'required|string|max:100|unique:categories,name',
         'description' => 'required|string',
         ]);
 
@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $category->user_id = auth()->id(); 
         $category->save();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('home');
     }
 
     /**

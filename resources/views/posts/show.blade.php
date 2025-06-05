@@ -1,40 +1,59 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Post Details') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <h3 class="text-3xl font-semibold text-gray-800 dark:text-gray-200">{{ $post->title }}</h3>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Category: {{ $post->category->name }}</p>
-                <span class="text-sm text-gray-500 dark:text-gray-400">{{ $post->created_at->diffForHumans() }}</span>
-                <img src="{{ $post->poster }}" alt="{{ $post->title }}"
-                    class="mt-4 rounded-md shadow-sm h-64 w-full object-cover">
-                <p class="text-gray-600 dark:text-gray-300 mt-4">{{ $post->content }}</p>
-
-                <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">Author: {{ $post->user->name }}</p>
-                @if ($post->user_id === Auth::id())
-                    <div class="mt-8">
-                        <a href="{{ route('posts.edit', $post->id) }}" class="text-green-600 hover:underline">Edit</a>
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="ml-2 text-red-600 hover:underline">Delete</button>
-                        </form>
-                    </div>
-                @endif
+    <div class="py-12 bg-gray-100 dark:bg-gray-900 min-h-screen">
+        <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
+            
+            <!-- Imagen a la derecha -->
+            <div class="w-full lg:w-1/2 h-96 lg:h-auto">
+                <img src="{{ $post->poster }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 mt-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    <a href="{{ route('posts.index') }}" class="text-blue-600 hover:underline">Back to Posts</a>
+
+            <!-- Contenido a la izquierda -->
+            <div class="w-full lg:w-1/2 p-6 flex flex-col justify-between">
+                <!-- Usuario + Fecha + Categoria -->
+                <div class="mb-4 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <p class="text-sm font-semibold text-gray-800 dark:text-gray-200 px-2">{{ $post->user->name }}</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
+                    </div>
+                    <div class="flex space-x-3 text-sm">
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Categoría: <span class="font-medium text-gray-800 dark:text-gray-200">{{ $post->category->name }}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Título y contenido -->
+                <div class="space-y-1 flex-grow">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ $post->title }}</h2>
+                    <p class="text-base text-gray-700 dark:text-gray-300 whitespace-pre-line">
+                        {{ $post->content }}
+                    </p>
+                </div>
+
+                <!-- Acciones -->
+                <div class="mt-6 border-t pt-4 border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                    @if ($post->user_id === Auth::id())
+                       <div class="flex space-x-4">
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
+                            </form>
+                        </div>
+
+                        <div class="flex space-x-3 text-sm">
+                            <a href="{{ route('posts.edit', $post->id) }}" class="text-green-600 hover:underline">Editar</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Botón volver -->
+        <div class="mt-6 max-w-5xl mx-auto">
+            <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg text-center">
+                <a href="{{ route('posts.index') }}" class="text-blue-600 hover:underline">← Volver a los Posts</a>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
