@@ -19,12 +19,6 @@
         <div class="bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <section class="bg-pink-200 shadow py-4">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <x-lista-categorias :categories="$categories" />
-                </div>
-            </section>
 
             <!-- Page Content -->
             <main class="bg-[#ffffff] text-[#ffffff]">
