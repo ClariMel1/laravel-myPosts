@@ -2,7 +2,7 @@
     <x-header-categories />
 
     <x-main>
-        <div class="p-4 sm:p-8 bg-white dark:bg-[#732255] shadow sm:rounded-lg">
+        <div class="p-4 sm:p-8 bg-white dark:bg-[#a27893] shadow sm:rounded-lg">
             <div class="max-w-xl">
                 <form method="POST" action="{{ route('posts.store') }}">
                     @csrf
