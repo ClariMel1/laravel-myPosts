@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-header-categories />
     <x-main>
-        <div class="max-w-5xl mx-auto bg-white dark:bg-[#732255] rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
+        <div class="max-w-5xl mx-auto bg-white dark:bg-[#a27893] rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
             
             <!-- Imagen a la derecha -->
             <div class="w-full lg:w-1/2 h-96 lg:h-auto">
