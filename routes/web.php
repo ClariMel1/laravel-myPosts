@@ -7,7 +7,6 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/posts/{id}', [PostsController::class, 'show'])->name('posts.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,5 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{slug}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 });
+
+Route::get('/posts/{id}', [PostsController::class, 'show'])->name('posts.show');
 
 require __DIR__.'/auth.php';
