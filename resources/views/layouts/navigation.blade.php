@@ -11,15 +11,15 @@
                 </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
-                        {{ __('Posts') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')" class="transition hover:text-[#d493bc]">
-                        {{ __('Categorías') }}
-                    </x-nav-link>
                     @auth()
+                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
+                            {{ __('Posts de la comunidad') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')" class="transition hover:text-[#d493bc]">
+                            {{ __('Gestionar Categorías') }}
+                        </x-nav-link>
                         <x-nav-link :href="route('posts.myPosts')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
-                            {{ __('Mis Posts') }}
+                            {{ __('Mis Posteos') }}
                         </x-nav-link>
                     @endauth
                 </div>
