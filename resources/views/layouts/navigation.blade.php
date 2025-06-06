@@ -76,9 +76,17 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
-                {{ __('posts.index') }}
-            </x-responsive-nav-link>
+            @auth()
+                <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
+                    {{ __('Posts de la comunidad') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')" class="transition hover:text-[#d493bc]">
+                    {{ __('Gestionar Categorías') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('posts.myPosts')" :active="request()->routeIs('posts.myPosts')" class="transition hover:text-[#d493bc]">
+                    {{ __('Mis Posteos') }}
+                </x-responsive-nav-link>
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
