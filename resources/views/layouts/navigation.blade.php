@@ -1,15 +1,27 @@
-<nav x-data="{ open: false }" class="ixed top-0 left-0 w-full z-50 bg-[#FDFDFC] dark:bg-[#732255] shadow text-[#E7F2E4]">
+<nav x-data="{ open: false }" class="ixed top-0 left-0 w-full z-50 bg-[#732255] shadow text-[#E7F2E4]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
 
-                <a href="{{ route('home') }}" class="font-bold text-lg">Mi Blog</a>
+                <div class="flex items-center shrink-0">
+                    <a href="{{ route('home') }}" class="font-bold text-lg">
+                        {{ config('app.name', '🏠') }}
+                    </a>
+                </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('posts.myPosts')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
-                        {{ __('Mis Posts') }}
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
+                        {{ __('Posts') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')" class="transition hover:text-[#d493bc]">
+                        {{ __('Categorías') }}
+                    </x-nav-link>
+                    @auth()
+                        <x-nav-link :href="route('posts.myPosts')" :active="request()->routeIs('posts.index')" class="transition hover:text-[#d493bc]">
+                            {{ __('Mis Posts') }}
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -18,7 +30,7 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-medium rounded transition hover:text-[#d493bc] text-[#732255] dark:text-[#E7F2E4] bg-transparent">
+                            <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-medium rounded transition hover:text-[#d493bc] text-[#732255] text-[#E7F2E4] bg-transparent">
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="ms-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -42,16 +54,16 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] dark:text-[#E7F2E4]">Iniciar sesión</a>
+                    <a href="{{ route('login') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] text-[#E7F2E4]">Iniciar sesión</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] dark:text-[#E7F2E4]">Registrarse</a>
+                        <a href="{{ route('register') }}" class="px-4 py-2 rounded transition hover:text-[#d493bc] text-[#732255] text-[#E7F2E4]">Registrarse</a>
                     @endif
                 @endauth
             </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-[#732255] dark:text-[#E7F2E4] hover:text-[#d493bc] hover:bg-[#E7F2E4] dark:hover:bg-[#3e5d82] focus:outline-none transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-[#732255] text-[#E7F2E4] hover:text-[#d493bc] hover:bg-[#E7F2E4] hover:bg-[#3e5d82] focus:outline-none transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -70,11 +82,11 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-[#3e5d82]">
+        <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 @auth
-                    <div class="font-medium text-base text-[#732255] dark:text-[#E7F2E4]">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-[#732255] dark:text-[#E7F2E4]">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-[#E7F2E4]">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm  text-[#E7F2E4]">{{ Auth::user()->email }}</div>
                 @endauth
             </div>
 
