@@ -1,7 +1,9 @@
 <div class="py-5 w-full">
+    @auth()
     <a href="{{ route('posts.create') }}" class="bg-white text-black px-8 py-2 rounded-full text-center items-center border-2 border-[#732255] uppercase inline-block">
         {{ __('+Añadir Post') }}
     </a>
+    @endauth
     <div class="py-5">
         <div class="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($posts as $post)
