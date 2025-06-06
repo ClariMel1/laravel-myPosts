@@ -1,5 +1,6 @@
 <x-app-layout>
-    <div class="py-12 bg-gray-100 dark:bg-gray-900 min-h-screen">
+     <x-header-categories />
+    <x-main>
         <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
 
             <!-- Imagen a la derecha -->
@@ -68,6 +69,6 @@
                 <a href="{{ route('posts.index') }}" class="text-blue-600 hover:underline">← Volver a los Posts</a>
             </div>
         </div>
-    </div>
+|   </x-main>
 </x-app-layout>
 
