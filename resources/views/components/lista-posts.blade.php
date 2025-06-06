@@ -5,7 +5,7 @@
     <div class="py-5">
         <div class="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($posts as $post)
-            <div class="bg-white  bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">
+            <div class="bg-white  bg-gray-100 dark:bg-[#732255] rounded-lg shadow-md overflow-hidden">
                 <!-- Header: Usuario -->
                 <div class="flex items-center p-4">
                     <p class="text-sm font-semibold text-gray-800 dark:text-gray-200 px-2">{{ $post->user->name }}</p>
@@ -27,7 +27,7 @@
                     <!-- Categoría y Ver más -->
                     <div class="mt-3 flex justify-between items-center text-sm text-gray-600 dark:text-gray-400">
                         <span>#{{ $post->category->name }}</span>
-                        <a href="{{ route('posts.show', $post->id) }}" class="text-blue-600 hover:underline">Ver más</a>
+                        <a href="{{ route('posts.show', $post->id) }}" class="px-4 py-2 bg-[#B2C6D5] text-white rounded-md hover:bg-[#7bb1db] transition">Ver más</a>
                     </div>
                 </div>
             </div>

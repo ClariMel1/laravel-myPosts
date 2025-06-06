@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-header-categories />
     <x-main>
-        <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
+        <div class="max-w-5xl mx-auto bg-white dark:bg-[#732255] rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
             
             <!-- Imagen a la derecha -->
             <div class="w-full lg:w-1/2 h-96 lg:h-auto">
@@ -34,16 +34,20 @@
                 <!-- Acciones -->
                 <div class="mt-6 border-t pt-4 border-gray-200 dark:border-gray-700 flex justify-between items-center">
                     @if ($post->user_id === Auth::id())
-                       <div class="flex space-x-4">
+                        <div class="flex space-x-4">
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
+                                <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
+                                    Eliminar
+                                </button>
                             </form>
                         </div>
 
                         <div class="flex space-x-3 text-sm">
-                            <a href="{{ route('posts.edit', $post->id) }}" class="text-green-600 hover:underline">Editar</a>
+                            <a href="{{ route('posts.edit', $post->id) }}" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+                                Editar
+                            </a>
                         </div>
                     @endif
                 </div>
@@ -52,8 +56,8 @@
 
         <!-- Botón volver -->
         <div class="mt-6 max-w-5xl mx-auto">
-            <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg text-center">
-                <a href="{{ route('posts.index') }}" class="text-blue-600 hover:underline">← Volver a los Posts</a>
+            <div class="p-4 bg-white dark:bg-[#B2C6D5] shadow sm:rounded-lg text-center">
+                <a href="{{ route('posts.index') }}" class="text-gray-600 hover:underline">← Volver a los Posts</a>
             </div>
         </div>
     </x-main>

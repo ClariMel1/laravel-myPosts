@@ -1,7 +1,7 @@
 <x-app-layout>
      <x-header-categories />
     <x-main>
-        <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
+        <div class="max-w-5xl mx-auto bg-white dark:bg-[#732255] rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row-reverse">
 
             <!-- Imagen a la derecha -->
             <div class="w-full lg:w-1/2 h-96 lg:h-auto">
@@ -20,7 +20,7 @@
                     <div>
                         <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Título</label>
                         <input type="text" name="title" id="title" value="{{ old('title', $post->title) }}" required
-                            class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-200">
+                            class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-black-200">
                     </div>
 
                     <!-- Categoría -->
@@ -55,7 +55,7 @@
                     <!-- Botón -->
                     <div class="pt-2">
                         <button type="submit"
-                            class="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
+                            class="w-full px-4 py-2 bg-[#8eb6d4] text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
                             Actualizar Post
                         </button>
                     </div>
@@ -65,8 +65,8 @@
 
         <!-- Botón volver -->
         <div class="mt-6 max-w-5xl mx-auto">
-            <div class="p-4 bg-white dark:bg-gray-800 shadow sm:rounded-lg text-center">
-                <a href="{{ route('posts.index') }}" class="text-blue-600 hover:underline">← Volver a los Posts</a>
+            <div class="p-4 bg-white dark:bg-[#732255] shadow sm:rounded-lg text-center">
+                <a href="{{ route('posts.index') }}" class="text-white-600 hover:underline">← Volver a los Posts</a>
             </div>
         </div>
 |   </x-main>
