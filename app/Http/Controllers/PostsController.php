@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
-        $postPerPage = 10; // Número de posts por página
+        $postPerPage = 3; // Número de posts por página
         $pageNumber = $request->input('page', 1);
         $categories = Category::all();
         // filtra los posts por categoría si se proporciona un parámetro de categoría
