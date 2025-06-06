@@ -13,10 +13,20 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::where('is_published', true)->latest('id')->paginate(6);
         $categories = Category::all();
+        // filtra los posts por categoría si se proporciona un parámetro de categoría
+        if ($request->has('category_id')) {
+            $categoryId = $request->input('category_id');
+            $posts = Post::where('is_published', true)
+                ->where('category_id', $categoryId)
+                ->latest('id')
+                ->paginate(6);
+        } else {
+            // Si no se proporciona categoría, muestra todos los posts publicados
+            $posts = Post::where('is_published', true)->latest('id')->paginate(6);
+        }
         return view('posts.index', compact('posts', 'categories'));
     }
 
@@ -97,7 +107,7 @@ class PostsController extends Controller
         $post->category_id = $request->input('category');
         $post->poster = $request->input('poster');
         $post->save();
-        
+
         return redirect()->route('posts.show', ['id' => $post->id])
             ->with('success', 'Post updated successfully.');
     }
@@ -105,7 +115,8 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {
+    public function destroy(string $id)
+    {
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
