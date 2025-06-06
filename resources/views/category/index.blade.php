@@ -1,8 +1,6 @@
 <x-app-layout>
 <div>
-    <h1 class="font-semibold text-xl text-white leading-tight mb-4">
-        {{ __('Listado de categorías') }}
-    </h1>
+    <x-title> {{ __('Listado de categorias') }}</x-title>
 
     <x-lista-categorias :categories="$categories" />
 
