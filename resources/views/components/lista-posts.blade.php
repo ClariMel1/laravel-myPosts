@@ -1,9 +1,9 @@
-<div class="mx-auto w-full">
-
-
-
-    <div class="py-12 w-full">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="py-5 w-full">
+    <a href="{{ route('posts.create') }}" class="bg-white text-black px-8 py-2 rounded-full text-center items-center border-2 border-[#732255] uppercase inline-block">
+        {{ __('+Añadir Post') }}
+    </a>
+    <div class="py-5">
+        <div class="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($posts as $post)
             <div class="bg-white  bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">
                 <!-- Header: Usuario -->
