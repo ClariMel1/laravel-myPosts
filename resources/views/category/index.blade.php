@@ -8,8 +8,9 @@
 
         <div class="flex justify-center mt-4">
         <a href="{{ route('categories.create') }}"
-        class="bg-white text-black px-6 py-1 rounded-full text-sm border border-[#732255] uppercase inline-block hover:bg-gray-100 shadow-md">
+        class="bg-white text-[#732255] font-bold px-8 py-2 rounded-full text-center items-center border-2 border-[#732255] shadow-lg uppercase inline-block hover:bg-[#732255] hover:text-white transition duration-200 mb-6">
             {{ __('+ Añadir nueva categoría') }}
+            
         </a>
         </div>
     </div>

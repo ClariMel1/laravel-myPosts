@@ -11,9 +11,9 @@
 @if($categories->count())
     <div class="relative mb-4 flex items-center gap-2">
         <!-- Contenedor deslizable con ID -->
-        <div id="category-scroll" class="flex items-center overflow-x-auto gap-3 px-1 scrollbar-hide max-w-full whitespace-nowrap flex-1 scroll-smooth">
+        <div id="category-scroll" class="flex items-center gap-3 px-1 scrollbar-hide w-full whitespace-nowrap">
             @foreach($categories->take(15) as $category)
-                <div class="flex items-center bg-white rounded-full shadow-md px-4 py-1 hover:shadow-md transition shrink-0">
+                <div class="flex items-center bg-white rounded-full shadow-md px-4 py-1 transition shrink-0 hover:bg-pink-100">
                     <a href="{{ route('categories.show', $category->slug) }}"
                        class="text-black font-medium text-sm hover:underline">
                         {{ $category->name }}

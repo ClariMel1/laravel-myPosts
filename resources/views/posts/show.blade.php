@@ -18,7 +18,9 @@
                     </div>
                     <div class="flex space-x-3 text-sm">
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Categoría: <span class="font-medium text-gray-800 dark:text-gray-200">{{ $post->category->name }}</span>
+                            <span class="font-medium text-gray-100 dark:text-gray-100 bg-black px-2 py-1 rounded">
+                                {{ $post->category->name }}
+                            </span>
                         </p>
                     </div>
                 </div>
