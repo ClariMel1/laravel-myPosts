@@ -15,15 +15,16 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="bg-gray-100 dark:bg-gray-900">
+    <body class="font-sans antialiased min-h-screen flex flex-col">
+        <div class="bg-gray-100 dark:bg-gray-900 flex-1 flex flex-col">
             @include('layouts.navigation')
 
 
             <!-- Page Content -->
-            <main class="bg-[#ffffff] text-[#ffffff]">
+            <main class="bg-[#ffffff] text-[#ffffff] flex-1">
                 {{ $slot }}
             </main>
         </div>
+        <x-footer />
     </body>
 </html>
