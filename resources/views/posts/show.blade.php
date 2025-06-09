@@ -18,9 +18,9 @@
                     </div>
                     <div class="flex space-x-3 text-sm">
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            <span class="font-medium text-gray-100 dark:text-gray-100 bg-black px-2 py-1 rounded">
-                                {{ $post->category->name }}
-                            </span>
+                            <a href="{{ route('categories.show', $post->category->slug) }}"class="font-medium text-pink-900  px-2 py-1 hover:text-white cursor-pointer">
+                                #{{ $post->category->name }}
+                            </a>
                         </p>
                     </div>
                 </div>

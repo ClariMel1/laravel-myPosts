@@ -27,19 +27,19 @@
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-[gray-900] border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                <input id="remember_me" type="checkbox" class="rounded bg-[pink-900] border-gray-300 border-pink-700 text-pink-600 shadow-sm focus:ring-indigo-500 focus:ring-pink-600 focus:ring-offset-pink-800" name="remember">
+                <span class="ms-2 text-sm text-gray-300">{{ __('Remember me') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4 gap-2">
             @if (Route::has('password.request'))
-                <a class="px-3 py-1 rounded bg-[#fdbe66] text-white hover:bg-[#ee9415] text-sm transition" href="{{ route('password.request') }}">
+                <a class="px-3 py-1 rounded rounded-full bg-pink-100 text-pink-900 border-transparent hover:bg-transparent border hover:border-pink-900 text-sm transition" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
 
-            <button type="submit" class="px-3 py-1 rounded bg-[#3e5d82] text-white hover:bg-[#318cfa] text-sm transition">
+            <button type="submit" class="px-3 py-1 rounded rounded-full bg-pink-200 text-pink-900 hover:bg-pink-900 hover:text-white text-sm transition">
                 {{ __('Log in') }}
             </button>
         </div>

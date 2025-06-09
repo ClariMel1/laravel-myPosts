@@ -41,7 +41,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')" class="transition hover:text-[#d493bc]">
+                            <x-dropdown-link :href="route('profile.edit')" class="transition text-pink-900 hover:text-[#d493bc]">
                                 {{ __('Perfil') }}
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">

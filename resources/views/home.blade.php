@@ -3,7 +3,8 @@
 
     <x-main>
         <x-title> {{ __('Posts más recientes') }}</x-title>
-        <x-lista-posts :posts="$posts" />
+        <x-poster :post="$posts->first()" />
+        <x-lista-posts :posts="$posts->skip(1)" />
     </x-main>
 
 </x-app-layout>

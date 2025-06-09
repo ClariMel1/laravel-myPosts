@@ -2,6 +2,7 @@
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
+
     .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -10,12 +11,21 @@
 
 @if($categories->count())
     <div class="relative mb-4 flex items-center gap-2">
+        <!-- Botón scroll izquierdo -->
+        <button id="scroll-left" onclick="scrollCategories('left')" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full bg-white border border-pink-600 hover:bg-pink-300 transition absolute left-0 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+
         <!-- Contenedor deslizable con ID -->
-        <div id="category-scroll" class="flex items-center gap-3 px-1 scrollbar-hide w-full whitespace-nowrap">
+        <div id="category-scroll" class="flex items-center gap-3 px-10 scrollbar-hide w-full whitespace-nowrap overflow-x-auto scroll-smooth">
             @foreach($categories->take(15) as $category)
                 <div class="flex items-center bg-white rounded-full shadow-md px-4 py-1 transition shrink-0 hover:bg-pink-100">
                     <a href="{{ route('categories.show', $category->slug) }}"
-                       class="text-black font-medium text-sm hover:underline">
+                       class="text-black font-medium text-sm hover:text-pink-900">
                         {{ $category->name }}
                     </a>
                     @if ($category->user_id === auth()->id())
@@ -33,15 +43,15 @@
             @if($categories->count() > 15)
                 <div class="shrink-0">
                     <a href="{{ route('categories.index') }}"
-                       class="text-blue-600 text-sm font-medium whitespace-nowrap hover:underline px-2 py-1 rounded-md">
+                       class="text-pink-600 border border-pink-600 py-1 text-sm font-medium whitespace-nowrap hover:bg-pink-100 hover:text-pink-900 hover:border-none px-4 rounded-full">
                         Ver más categorías
                     </a>
                 </div>
             @endif
         </div>
 
-        <!-- Botón scroll derecho (solo en escritorio) -->
-        <button onclick="scrollCategories()" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-pink-300 transition">
+        <!-- Botón scroll derecho -->
+        <button id="scroll-right" onclick="scrollCategories('right')" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-pink-300 border border-pink-600 transition absolute right-0 z-10">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -90,10 +100,35 @@
     </div>
 @endif
 
-<!-- Script para hacer scroll en escritorio -->
+<!-- Script para manejar el scroll horizontal -->
 <script>
-    function scrollCategories() {
+    function scrollCategories(direction) {
         const container = document.getElementById('category-scroll');
-        container.scrollBy({ left: 200, behavior: 'smooth' });
+        const amount = 200;
+
+        if (direction === 'left') {
+            container.scrollBy({ left: -amount, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: amount, behavior: 'smooth' });
+        }
     }
+
+    function updateScrollButtons() {
+        const container = document.getElementById('category-scroll');
+        const leftBtn = document.getElementById('scroll-left');
+        const rightBtn = document.getElementById('scroll-right');
+
+        if (!container) return;
+
+        const scrollLeft = container.scrollLeft;
+        const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+        leftBtn.style.display = scrollLeft > 10 ? 'flex' : 'none';
+        rightBtn.style.display = scrollLeft < maxScrollLeft - 10 ? 'flex' : 'none';
+    }
+
+    window.addEventListener('load', updateScrollButtons);
+    window.addEventListener('resize', updateScrollButtons);
+
+    document.getElementById('category-scroll')?.addEventListener('scroll', updateScrollButtons);
 </script>
