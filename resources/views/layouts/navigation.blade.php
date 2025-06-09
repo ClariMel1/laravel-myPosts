@@ -5,10 +5,12 @@
             <div class="flex">
 
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('home') }}" class="font-bold text-lg">
+                    <a href="{{ route('home') }}" class="flex items-center font-bold text-lg gap-2">
+                        <img src="{{ asset('logo.png') }}" alt="Logo" class="w-8 h-8">
                         {{ config('app.name', '🏠') }}
                     </a>
                 </div>
+                
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @auth()
